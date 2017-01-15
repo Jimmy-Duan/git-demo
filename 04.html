@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./konva/konva.min.js"></script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+<script>
+    var stage=new Konva.Stage({
+        container:'container',
+        width:window.innerWidth,
+        height:window.innerWidth,
+    });
+    var cenX=stage.width()/2;
+    var cenY=stage.height()/2;
+
+    var bglayer=new Konva.Layer();
+    stage.add(bglayer);
+
+    var innerR=252/2;
+    var outerR=220;
+
+    var innercircle=new Konva.Circle({
+        x:cenX,
+        y:cenY,
+        radius:innerR,
+        stroke:'#DADBE0',
+        strokeWidth:4,
+        dash:[10,4],
+    })
+
+    var outercircle=new Konva.Circle({
+        x:cenX,
+        y:cenY,
+        radius:outerR,
+        stroke:'#DADBE0',
+        strokeWidth:4,
+        dash:[10,4],
+    })
+
+    var cencircle=new Konva.Circle({
+        x:cenX,
+        y:cenY,
+        radius:132/2,
+        fill:'#525A82',
+    });
+
+    var cenring= new Konva.Ring({
+        x:cenX,
+        y:cenY,
+        innerRadius:132/2,
+        outerRadius:180/2,
+        fill:'#E1E1E1',
+        opacity:.5,
+    });
+
+    var centext=new Konva.Text({
+        x:cenX-90,
+        y:cenY-8.5,
+        width:180,
+        align:'center',
+        text:'web全转',
+        fontSize:17,
+        fontFamily:'微软雅黑',
+        fontStyle:'bold',
+        fill:'#fff'
+
+    });
+
+
+    bglayer.add(innercircle);
+    bglayer.add(outercircle);
+    bglayer.add(cencircle);
+    bglayer.add(cenring);
+    bglayer.add(centext);
+    bglayer.draw();
+
+    var animatelayer=new Konva.Layer();
+    stage.add(animatelayer);
+    var x0=cenX+innerR*Math.cos(-60*Math.PI/180);
+    var y0=cenY+innerR*Math.sin(-60*Math.PI/180);
+
+    var html=new Konva.Circle({
+        x:x0,
+        y:y0,
+        radius:30,
+        fill:'#FABB48',
+        opacity:.8,
+    });
+    animatelayer.add(html);
+    animatelayer.draw();
+</script>
+</html>

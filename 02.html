@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <canvas id="demo" ></canvas>
+</body>
+<script>
+    (function(){
+        var canvas=document.querySelector("#demo");
+        var ctx=canvas.getContext('2d');
+        canvas.width=600;
+        canvas.height=600;
+
+        canvas.style.border="1px solid #000";
+        var recth=10;
+        var rectw=10;
+        ctx.lineWidth=0.5;
+        for(var i=0;i<canvas.height/recth;i++){
+            ctx.moveTo(0,i*recth);
+            ctx.lineTo(canvas.width,i*recth);
+            ctx.moveTo(i*rectw,0);
+            ctx.lineTo(i*rectw,canvas.height)
+            ctx.stroke();
+        }
+
+
+
+
+
+
+
+//        ctx.beginPath();
+//        ctx.moveTo(0,0);
+//        ctx.lineTo(100,100);
+//        ctx.stroke();
+    }());
+</script>
+</html>
